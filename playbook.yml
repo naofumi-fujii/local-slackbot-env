@@ -3,11 +3,6 @@
   hosts: all
   user: vagrant
   vars:
-    mysql_root_password: ''
-    rbenv_ruby_version: 2.3.1
-    rbenv_gems:
-      - bundler
-      - rubocop
     nodejs_npm_global_packages:
       - name: jslint
       - name: node-sass
@@ -15,69 +10,14 @@
       - name: purify-css
       - name: strip-css-comments-cli
       - name: n
-    zsh_ohmy_plugins:
-      - git
-      - git-flow
-      - docker
-      - rails
 
   tasks:
-    - name: set git alias
-      shell: git config --global alias.st status
-
     - name: update node to latest version
       become: yes
       shell: |
         n latest
         npm update -g npm
 
-    - name: install dein.vim
-      shell: |
-        curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /home/vagrant/installer.sh
-        sh /home/vagrant/installer.sh /home/vagrant
-
-    - name: Checkout my dotfiles
-      git:
-        repo: https://github.com/naofumi-fujii/dotfiles.git
-        dest: ~/dotfiles
-
-    - name: Create symlinks
-      file:
-        src: ~/dotfiles/{{ item }}
-        dest: ~/{{ item }}
-        state: link
-        force: yes
-      with_items:
-        - .tmux.conf
-        - .zlogin
-        - .vimrc
-
-    - name: install packages
-      become: yes
-      apt: name={{item}} update_cache=yes
-      with_items:
-        - git
-        - nkf
-        - build-essential
-        - vim-gnome
-        - fonts-ipafont
-        - libmysqlclient-dev
-        - libmagickwand-dev
-        - silversearcher-ag
-        - libsqlite3-dev
-
-    - name: install go packages
-      shell: |
-        go get github.com/motemen/ghq
-        go get github.com/peco/peco/cmd/peco
-        go get github.com/github/hub
-
   roles:
-    - role: vaulttec.zsh
-    - role: joshualund.golang
-      become: yes
-    - role: spitfast.rbenv
     - role: geerlingguy.nodejs
-      become: yes
-    - role: geerlingguy.mysql
       become: yes
