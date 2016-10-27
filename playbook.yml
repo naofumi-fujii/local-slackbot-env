@@ -13,7 +13,7 @@
         n latest
         npm update -g npm
     - name: git clone botkit
-      git: repo=https://github.com/howdyai/botkit.git dest=/home/vagrant
+      git: repo=https://github.com/howdyai/botkit.git dest=/home/vagrant/botkit
 
   roles:
     - role: geerlingguy.nodejs
