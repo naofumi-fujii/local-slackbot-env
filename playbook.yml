@@ -4,11 +4,6 @@
   user: vagrant
   vars:
     nodejs_npm_global_packages:
-      - name: jslint
-      - name: node-sass
-      - name: phantomjs
-      - name: purify-css
-      - name: strip-css-comments-cli
       - name: n
 
   tasks:
