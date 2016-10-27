@@ -1,6 +1,1 @@
-- src: zzet.rbenv
-- src: spitfast.rbenv
-- src: geerlingguy.mysql
 - src: geerlingguy.nodejs
-- src: joshualund.golang
-- src: vaulttec.zsh
