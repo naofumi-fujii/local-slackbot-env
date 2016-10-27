@@ -1,12 +1,3 @@
-# vagrant-ansible-sample
-vagrant provision with ansible(galaxy)
-
-requires
+local-slackbot-env
 --
-- vagrant
-- virtualbox
-
-quick start
---
-- git clone
-- vagrant up
+サーバーたてれない人のためのローカルでSlackBotガイド - Qiita http://qiita.com/naofumi-fujii/items/10beba9be56aaa571318
